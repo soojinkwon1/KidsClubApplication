@@ -1,0 +1,80 @@
+﻿@{
+    ViewData["SiteName"] = "KidsClubAppliation.com";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="~/css/bootstrap.css" rel="stylesheet">
+<link href="~/css/style.css" rel="stylesheet">
+<link href="~/css/responsive.css" rel="stylesheet">
+
+<!-- Responsive -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    
+</head>
+<body>
+    <header>
+   
+       <div class="fixed-header">
+                <div class="auto-container clearfix">
+                    
+                       <div class="pull-right">
+                          <nav class="main-menu">
+                            <div class="navbar-collapse show collapse clearfix">
+                                <div class="logo pull-left">
+                                      <a><img src="~/images/logo.png" style="width: 100px;"></a>
+                                     </div>
+                                <ul class="navigation clearfix">
+                                    
+                                    <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                                    <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="About" asp-action="Index">About</a></li>
+                                    <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Events" asp-action="Index">Event</a></li>
+                                    <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Galleries" asp-action="Index">Gallery</a></li>
+                                    <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="KCActivities" asp-action="Index">Activitie</a></li>
+                                    <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Contact" asp-action="Index">Contact</a></li>
+                                    <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="EventBook" asp-action="Index">EventBook</a></li>
+                                    @if (User.IsInRole("Administrator"))
+                                    {
+                                    <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="BookedMessage">Booked</a></li>
+                                    }
+                                    @if (User.IsInRole("Administrator"))
+                                    {
+                                    <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="Messages">Contact Messages</a></li>
+                                    }
+                                    @if (User.IsInRole("Administrator"))
+                                    {
+                                    <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="SuMessages">Subscribe</a></li>
+                                    }
+                                    <partial name="_LoginPartial" />
+
+                                </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+ </header>
+
+
+@RenderBody()
+ 
+      <footer class="lh-lg text-muted">
+        <div class="container text-center">
+            &copy; 2022 - @ViewData["SiteName"]. Power by .NET 6.0
+        </div>
+    </footer>
+<script src="~/js/jquery.js"></script>
+<script src="~/js/popper.min.js"></script>
+<script src="~/js/bootstrap.min.js"></script>
+<script src="~/js/jquery-ui.js"></script>
+<script src="~/js/jquery.fancybox.js"></script>
+<script src="~/js/owl.js"></script>
+<script src="~/js/wow.js"></script>
+<script src="~/js/appear.js"></script>
+<script src="~/js/parallax.min.js"></script>
+<script src="~/js/script.js"></script>
+@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

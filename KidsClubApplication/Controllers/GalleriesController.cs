@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using KidsClubApplication.Data;
 using KidsClubApplication.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace KidsClubApplication.Controllers
 {
@@ -46,6 +47,7 @@ namespace KidsClubApplication.Controllers
         }
 
         // GET: Galleries/Create
+        [Authorize(Roles = "Administrator")]
         public IActionResult Create()
         {
             return View();
@@ -56,6 +58,7 @@ namespace KidsClubApplication.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Create([Bind("ImageId,ImagePath")] Gallery gallery)
         {
             if (ModelState.IsValid)
@@ -68,6 +71,7 @@ namespace KidsClubApplication.Controllers
         }
 
         // GET: Galleries/Edit/5
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Gallery == null)
@@ -88,6 +92,7 @@ namespace KidsClubApplication.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Edit(int id, [Bind("ImageId,ImagePath")] Gallery gallery)
         {
             if (id != gallery.ImageId)
@@ -119,6 +124,7 @@ namespace KidsClubApplication.Controllers
         }
 
         // GET: Galleries/Delete/5
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Gallery == null)
@@ -139,6 +145,7 @@ namespace KidsClubApplication.Controllers
         // POST: Galleries/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             if (_context.Gallery == null)

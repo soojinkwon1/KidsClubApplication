@@ -7,14 +7,15 @@ namespace KidsClubApplication.Models
         [Key]
         public int EventID { get; set; }
         [Required]
-        public string EventTitle { get; set; }
+        public string? EImagePath { get; set; }
         [Required]
-        public string EventDescription { get; set; }
+        public string? EventTitle { get; set; }
         [Required]
-        public string Location { get; set; }
+        public string? EventDescription { get; set; }
+        [Required]
+        public string? Location { get; set; }
         [Required]
         public DateTime EventDateTime { get; set; }
 
-        public List<Participant> Participants { get; set; }
     }
 }

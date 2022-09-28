@@ -4,14 +4,20 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+@*<h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    @if (User.IsInRole("Administrator"))
+    {
+        <a asp-action="Create">Create New</a>
+    }
 </p>
 <table class="table">
     <thead>
         <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EImagePath)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.EventTitle)
             </th>
@@ -31,6 +37,9 @@
 @foreach (var item in Model) {
         <tr>
             <td>
+                @Html.DisplayFor(modelItem => item.EImagePath)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.EventTitle)
             </td>
             <td>
@@ -43,11 +52,223 @@
                 @Html.DisplayFor(modelItem => item.EventDateTime)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.EventID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.EventID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.EventID">Delete</a>
+                    @if (User.IsInRole("Administrator"))
+                    {
+                        <a asp-action="Edit" asp-route-id="@item.EventID">Edit</a> 
+                        <a asp-action="Delete" asp-route-id="@item.EventID">Delete</a>
+
+                    }
+                
+                <a asp-action="Details" asp-route-id="@item.EventID">Details</a> 
+                
             </td>
         </tr>
 }
     </tbody>
-</table>
+</table>*@
+
+<!--Page Title-->
+    <section class="page-title" style="background-image:url(images/banner3.jpg); border-image-width: 10%;">
+        <div class="auto-container">
+            <div class="inner-container clearfix">
+                <ul class="bread-crumb clearfix">
+                    <li><a href="index.html">Home</a></li>
+                    <li>Events</li>
+                </ul>
+                <h1>Our Events</h1>
+            </div>
+        </div>
+    </section>
+    <!--End Page Title-->
+
+    <!-- News Section -->
+    <section class="news-section">
+
+        <p>
+    @if (User.IsInRole("Administrator"))
+    {
+        <a asp-action="Create">Create New</a>
+    }
+</p>
+        <div class="auto-container">
+            <div class="row">
+
+
+
+                
+                <!-- News Block -->
+                @foreach (var item in Model) {
+                <div class="news-block col-lg-6 col-md-12 col-sm-12 wow fadeInUp" data-wow-delay="400ms">
+                    <div class="inner-box">
+                        <div class="image-box">
+                            <figure class="image"><a href="news-single.html"><img src="@Html.DisplayFor(modelItem => item.EImagePath)" alt=""></a></figure>
+                        </div>
+                        <div class="lower-content">
+                            <ul class="post-info">
+                                <li><span class="fa fa-calendar-alt"></span><a href="news-single.html">@Html.DisplayFor(modelItem => item.EventDateTime)</a></li>
+                            </ul>
+                            <h3><a href="news-single.html">@Html.DisplayFor(modelItem => item.EventTitle)</a></h3>
+                            <ul class="event-info">
+                                <li><span>Location:</span>@Html.DisplayFor(modelItem => item.Location)</li>
+                            </ul>
+                            <div class="text">
+                               <p>@Html.DisplayFor(modelItem => item.EventDescription)
+
+                               </p> </div>
+                                @if (User.IsInRole("Administrator"))
+                    {
+                        <a asp-action="Edit" asp-route-id="@item.EventID">Edit</a> 
+                        <a asp-action="Delete" asp-route-id="@item.EventID">Delete</a>
+                        <a asp-action="Details" asp-route-id="@item.EventID">Details</a>
+
+                    }
+                        </div>
+
+                    </div>
+
+                </div>
+
+                }
+
+                @*<!-- News Block -->
+                <div class="news-block col-lg-6 col-md-12 col-sm-12 wow fadeInUp">
+                    <div class="inner-box">
+                        <div class="image-box">
+                            <figure class="image"><a href="news-single.html"><img src="images/resource/news-6.jpg" alt=""></a></figure>
+                        </div>
+                        <div class="lower-content">
+                            <ul class="post-info">
+                                <li><span class="fa fa-pencil-alt"></span><a href="news-single.html">by admin</a></li>
+                                <li><span class="fa fa-calendar-alt"></span><a href="news-single.html">10 October 2021</a></li>
+                            </ul>
+                            <h3><a href="news-single.html">Fiji Day Celebration</a>s</a></h3>
+                            <ul class="event-info">
+                                <li><span>Time:</span> 9:00-11:00</li>
+                                <li><span>Location:</span> PIACT</li>
+                            </ul>
+                            <div class="text">
+                               <p> Bula Family, </p>
+
+                               <p> Today we have been given the opportunity to utilise the Hall at Fernworth on Friday. 
+                                So, we have decided to plan a fun day for our children, to end Fiji Language Week. </p>
+
+                               <p>We are aware parents may have work commitments on this day. Therefore, you are more than welcome to drop your child/children off or make an arrangement. </p>
+
+                                <p>Because we are still in Level 2, parents will need to sign or scan code, also you will need to wear a mask walking in. </p>
+
+                                <p>Vinaka </p>
+
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <!-- News Block -->
+                <div class="news-block col-lg-6 col-md-12 col-sm-12 wow fadeInUp" data-wow-delay="400ms">
+                    <div class="inner-box">
+                        <div class="image-box">
+                            <figure class="image"><a href="news-single.html"><img src="images/resource/news-7.jpg" alt=""></a></figure>
+                        </div>
+                        <div class="lower-content">
+                            <ul class="post-info">
+                                <li><span class="fa fa-pencil-alt"></span><a href="news-single.html">by admin</a></li>
+                                <li><span class="fa fa-calendar-alt"></span><a href="news-single.html">10 October 2021</a></li>
+                            </ul>
+                            <h3><a href="news-single.html">Fijian Language Week Fun Day</a>s</a></h3>
+                            <ul class="event-info">
+                                <li><span>Time:</span> 10:00-3:00</li>
+                                <li><span>Location:</span> Fernworth Primary School</li>
+                            </ul>
+                            <div class="text">
+                               <p> Bula Family, </p>
+
+                               <p> Today we have been given the opportunity to utilise the Hall at Fernworth on Friday. 
+                                So, we have decided to plan a fun day for our children, to end Fiji Language Week. </p>
+
+                               <p>We are aware parents may have work commitments on this day. Therefore, you are more than welcome to drop your child/children off or make an arrangement. </p>
+
+                                <p>Because we are still in Level 2, parents will need to sign or scan code, also you will need to wear a mask walking in. </p>
+
+                                <p>Vinaka </p>
+
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <!-- News Block -->
+                <div class="news-block col-lg-6 col-md-12 col-sm-12 wow fadeInUp">
+                    <div class="inner-box">
+                        <div class="image-box">
+                            <figure class="image"><a href="news-single.html"><img src="images/resource/news-8.jpg" alt=""></a></figure>
+                        </div>
+                         <div class="lower-content">
+                            <ul class="post-info">
+                                <li><span class="fa fa-pencil-alt"></span><a href="news-single.html">by admin</a></li>
+                                <li><span class="fa fa-calendar-alt"></span><a href="news-single.html">8 October 2022</a></li>
+                            </ul>
+                            <h3><a href="news-single.html">Sports Day</a>s</a></h3>
+                            <ul class="event-info">
+                                <li><span>Time:</span> 9:00-11:00</li>
+                                <li><span>Location:</span> TBC</li>
+                            </ul>
+                            <div class="text">
+                               <p> Bula Family, </p>
+
+                               <p> Today we have been given the opportunity to utilise the Hall at Fernworth on Friday. 
+                                So, we have decided to plan a fun day for our children, to end Fiji Language Week. </p>
+
+                               <p>We are aware parents may have work commitments on this day. Therefore, you are more than welcome to drop your child/children off or make an arrangement. </p>
+
+                                <p>Because we are still in Level 2, parents will need to sign or scan code, also you will need to wear a mask walking in. </p>
+
+                                <p>Vinaka </p>
+
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <!-- News Block -->
+                <div class="news-block col-lg-6 col-md-12 col-sm-12 wow fadeInUp" data-wow-delay="400ms">
+                    <div class="inner-box">
+                        <div class="image-box">
+                            <figure class="image"><a href="news-single.html"><img src="images/resource/news-9.jpg" alt=""></a></figure>
+                        </div>
+                        <div class="lower-content">
+                            <ul class="post-info">
+                                <li><span class="fa fa-pencil-alt"></span><a href="news-single.html">by admin</a></li>
+                                <li><span class="fa fa-calendar-alt"></span><a href="news-single.html">30 July 2022</a></li>
+                            </ul>
+                            <h3><a href="news-single.html">Term 3 Welcome Back Celebration</a></a></h3>
+                            <ul class="event-info">
+                                <li><span>Time:</span> 1:00-3:00</li>
+                                <li><span>Location:</span> Fernworth Primary School</li>
+                            </ul>
+                            <div class="text">
+                               <p> Bula Family, </p>
+
+                               <p> Today we have been given the opportunity to utilise the Hall at Fernworth on Friday. 
+                                So, we have decided to plan a fun day for our children, to end Fiji Language Week. </p>
+
+                               <p>We are aware parents may have work commitments on this day. Therefore, you are more than welcome to drop your child/children off or make an arrangement. </p>
+
+                                <p>Because we are still in Level 2, parents will need to sign or scan code, also you will need to wear a mask walking in. </p>
+
+                                <p>Vinaka </p>
+
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>*@
+
+
+            </div>
+        </div>
+    </section>
+    <!--End News Section -->
+

@@ -28,7 +28,6 @@ namespace KidsClubApplication.Controllers
                           Problem("Entity set 'ApplicationDbContext.Event'  is null.");
         }
 
-        [Authorize(Roles = "Administrator")]
         // GET: Events/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -48,6 +47,7 @@ namespace KidsClubApplication.Controllers
         }
 
         // GET: Events/Create
+        [Authorize(Roles = "Administrator")]
         public IActionResult Create()
         {
             return View();
@@ -58,7 +58,8 @@ namespace KidsClubApplication.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("EventID,EventTitle,EventDescription,Location,EventDateTime")] Event @event)
+        [Authorize(Roles = "Administrator")]
+        public async Task<IActionResult> Create([Bind("EventID,EImagePath,EventTitle,EventDescription,Location,EventDateTime")] Event @event)
         {
             if (ModelState.IsValid)
             {
@@ -70,6 +71,7 @@ namespace KidsClubApplication.Controllers
         }
 
         // GET: Events/Edit/5
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Event == null)
@@ -90,7 +92,8 @@ namespace KidsClubApplication.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("EventID,EventTitle,EventDescription,Location,EventDateTime")] Event @event)
+        [Authorize(Roles = "Administrator")]
+        public async Task<IActionResult> Edit(int id, [Bind("EventID,EImagePath,EventTitle,EventDescription,Location,EventDateTime")] Event @event)
         {
             if (id != @event.EventID)
             {
@@ -121,6 +124,7 @@ namespace KidsClubApplication.Controllers
         }
 
         // GET: Events/Delete/5
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Event == null)
@@ -141,6 +145,7 @@ namespace KidsClubApplication.Controllers
         // POST: Events/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             if (_context.Event == null)

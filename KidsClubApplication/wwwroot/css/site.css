@@ -1,18 +1,53 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    background-color: #faf8f2;
+}
+
+.navbar-brand {
+    font-size: 2rem;
+    color: #3d3d3d;
+}
+
+.nav-item {
+    margin-right: 1.25rem;
+}
+
+.nav-link {
+    font-size: 1.15rem;
+}
+
+.main {
+    font-size: 20px;
+    font-family: charter, Georgia, Cambria, "Times New Roman", Times, serif;
+    color: rgba(41, 41, 41, 1);
+}
+
+.messagebox {
+    background-color: #6f8c84;
+}
+
+.progress:not(.hover) .progress-bar {
+    width: 0 !important;
+}
+
+.progress.hover .progress-bar {
+    -webkit-transition: all 1.3s ease-in-out;
+    -moz-transition: all 1.3s ease-in-out;
+    -o-transition: all 1.3s ease-in-out;
+    transition: all 1.3s ease-in-out;
 }

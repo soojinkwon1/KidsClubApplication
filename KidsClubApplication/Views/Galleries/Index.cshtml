@@ -1,15 +1,13 @@
 ﻿@model IEnumerable<KidsClubApplication.Models.Gallery>
 
-@{
-    ViewData["Title"] = "Index";
-}
-
-<h1>Index</h1>
-
 <p>
-    <a asp-action="Create">Create New</a>
+    @if (User.IsInRole("Administrator"))
+    {
+        <a asp-action="Create">Create New</a>
+    }
+    
 </p>
-<table class="table">
+@*<table class="table">
     <thead>
         <tr>
             <th>
@@ -19,17 +17,55 @@
         </tr>
     </thead>
     <tbody>
+
+
+
 @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ImagePath)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ImageId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ImageId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ImageId">Delete</a>
-            </td>
-        </tr>
-}
+  
+            
+                    @if (User.IsInRole("Administrator"))
+                    {
+                        <a asp-action="Edit" asp-route-id="@item.ImageId">Edit</a> 
+                        <a asp-action="Delete" asp-route-id="@item.ImageId">Delete</a>
+                        <a asp-action="Details" asp-route-id="@item.ImageId">Details</a>
+                    }
+             
+                 
+               @Html.DisplayFor(modelItem => item.ImagePath)
+            
+         }
+
+
+
     </tbody>
 </table>
+*@
+<!-- Gallery Section -->
+            <section class="gallery-section style-two">
+                <div class="auto-container">
+                    <div class="row">
+
+
+                        <!-- Gallery Item -->
+                        @foreach (var item in Model) {
+                        <div class="gallery-item col-lg-4 col-md-6 col-sm-12 wow fadeIn">
+                            @if (User.IsInRole("Administrator"))
+                              {
+                               <a asp-action="Edit" asp-route-id="@item.ImageId">Edit</a> 
+                               <a asp-action="Delete" asp-route-id="@item.ImageId">Delete</a>
+                               <a asp-action="Details" asp-route-id="@item.ImageId">Details</a>
+                              }  
+                            <div class="image-box">                             
+                                <figure class="image"><img src="@Html.DisplayFor(modelItem => item.ImagePath)" alt=""></figure>
+                                <div class="overlay-box"><a href="@Html.DisplayFor(modelItem => item.ImagePath)" class="lightbox-image" data-fancybox='gallery'><span class="icon flaticon-add"></span></a></div>
+                            </div>
+                        </div>
+                          
+                        }
+
+
+
+                    </div>
+                </div>
+            </section>
+

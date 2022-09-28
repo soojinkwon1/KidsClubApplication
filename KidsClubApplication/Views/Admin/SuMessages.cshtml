@@ -1,0 +1,89 @@
+﻿@model IEnumerable<KidsClubApplication.Models.SuMessage>
+
+@{
+    ViewData["Title"] = " Subscribe Messages Review";
+    Layout = "~/Views/Shared/_LayoutSuAdmin.cshtml";
+}
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb ps-5 pt-2 pb-2 bg-light border-bottom">
+        <li class="breadcrumb-item active" aria-current="page">Home / @ViewData["Title"]</li>
+    </ol>
+</nav>
+
+
+<style>
+    .table-fixed tbody {
+        height: 800px;
+        overflow-y: auto;
+        width: 100%;
+    }
+
+    .table-fixed thead,
+    .table-fixed tbody,
+    .table-fixed tr,
+    .table-fixed td,
+    .table-fixed th {
+        display: block;
+    }
+
+        .table-fixed tr:after {
+            content: "";
+            display: block;
+            visibility: hidden;
+            clear: both;
+        }
+
+        .table-fixed tbody td,
+        .table-fixed thead > tr > th {
+            float: left;
+        }
+
+    .table > thead > tr > th,
+    .table > thead > tr > td {
+        font-size: .9em;
+        font-weight: 400;
+        border-bottom: 0;
+        letter-spacing: 1px;
+        vertical-align: top;
+        padding: 8px;
+        background: #51596a;
+        text-transform: uppercase;
+        color: #ffffff;
+    }
+</style>
+
+
+
+    @*<div class="row justify-content-md-center lh-base">
+        <div class="col-3">
+            <ul class="list-unstyled">
+                <li class="text-black-50">@Html.DisplayFor(modelItem => item.Email)</li>
+                
+            </ul>
+        </div>
+        <div class="col-4">
+            <ul class="list-unstyled">
+            <li class="text-black-50">@Html.DisplayFor(modelItem => item.CreatedAt)</li>
+            </ul>
+            </div>
+    </div>*@
+
+
+    <table class="table table-fixed">
+        <thead>
+            <tr>
+                <th class="col-xl-2">Email</th>
+                <th class="col-xl-2">Create time</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="col-xl-2">@Html.DisplayFor(modelItem => item.Email)</td>
+                    <td class="col-xl-2">@Html.DisplayFor(modelItem => item.CreatedAt)</td>
+                </tr>
+            }
+        </tbody>
+    </table>

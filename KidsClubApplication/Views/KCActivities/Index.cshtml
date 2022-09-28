@@ -4,12 +4,10 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+@*<h1>Index</h1>
+*@
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
+@*<table class="table">
     <thead>
         <tr>
             <th>
@@ -50,4 +48,144 @@
         </tr>
 }
     </tbody>
-</table>
+</table>*@
+
+<!--Page Title-->
+    <section class="page-title" style="background-image:url(images/banner3.jpg); border-image-width: 10%;">
+        <div class="auto-container">
+            <div class="inner-container clearfix">
+                <ul class="bread-crumb clearfix">
+                    <li><a href="index.html">Home</a></li>
+                    <li>Activities</li>
+                </ul>
+                <h1>Activities</h1>
+            </div>
+        </div>
+    </section>
+    <!--End Page Title-->
+
+
+    @if (User.IsInRole("Administrator"))
+                 {
+                   <a asp-action="Create">Create New</a>
+                 }
+
+
+    <!-- Program Section -->
+    <section class="program-section alternate">
+        <div class="auto-container">
+            <div class="row">
+
+                
+
+                @*@foreach (var item in Model) {
+                <!-- Program Block -->
+                <div class="program-block col-lg-4 col-md-6 col-sm-12 wow fadeInUp">
+                    <div class="inner-box">
+                        <div class="image-box">
+                            <figure class="image"><a href="numbers-matching.html"><img src="@Html.DisplayFor(modelItem => item.MediaType)" alt=""></a></figure>
+                        </div>
+                        <div class="lower-content">
+                            <ul class="program-info">
+                                <li><span>Date:</span>@Html.DisplayFor(modelItem => item.ActivityDate)</li>
+                            </ul>
+                            <h4><a href="numbers-matching.html">@Html.DisplayFor(modelItem => item.Title)</a></h4>
+                            <div class="text">@Html.DisplayFor(modelItem => item.Description)</div>
+                            
+                             <a asp-action="Edit" asp-route-id="@item.ActivityId">Edit</a> |
+                             <a asp-action="Details" asp-route-id="@item.ActivityId">Details</a> |
+                             <a asp-action="Delete" asp-route-id="@item.ActivityId">Delete</a>
+                        </div>
+                    </div>
+                </div>
+                }*@
+
+                @foreach (var item in Model) {
+                <!-- Program Block -->
+                <div class="program-block col-lg-4 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay="400ms">
+                    <div class="inner-box">
+                        <div class="image-box">
+                            <figure class="image"><a href="paper-plates-art.html"><img src="@Html.DisplayFor(modelItem => item.MediaType)" alt=""></a></figure>
+                        </div>
+                        <div class="lower-content">
+                            <h4><a href="paper-plates-art.html">@Html.DisplayFor(modelItem => item.Title)</a></h4>
+                            <div class="text">@Html.DisplayFor(modelItem => item.Description)</div>
+                            <ul class="program-info">                               
+                                <li><span>Date&Time:</span>@Html.DisplayFor(modelItem => item.ActivityDate)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                }
+                @*<!-- Program Block -->
+                <div class="program-block col-lg-4 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay="800ms">
+                    <div class="inner-box">
+                        <div class="image-box">
+                            <figure class="image"><a href="create-cartoon-egg.html"><img src="~/images/resource/program-3.jpg" alt=""></a></figure>
+                        </div>
+                        <div class="lower-content">
+                            <h4><a href="create-cartoon-egg.html">Create Egg Cartoon</a></h4>
+                            <div class="text">Lorem ipsum avail but the major have suffer in some form.</div>
+                            <ul class="program-info">
+                                <li><span>Age:</span> 2-3 years</li>
+                                <li><span>Time:</span> 9:00-11:00</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Program Block -->
+                <div class="program-block col-lg-4 col-md-6 col-sm-12 wow fadeInUp">
+                    <div class="inner-box">
+                        <div class="image-box">
+                            <figure class="image"><a href="cooking-fun-cake.html"><img src="~/images/resource/program-4.jpg" alt=""></a></figure>
+                        </div>
+                        <div class="lower-content">
+                            <h4><a href="cooking-fun-cake.html">Cooking Fun Cake</a></h4>
+                            <div class="text">Lorem ipsum avail but the major have suffer in some form.</div>
+                            <ul class="program-info">
+                                <li><span>Age:</span> 2-3 years</li>
+                                <li><span>Time:</span> 9:00-11:00</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Program Block -->
+                <div class="program-block col-lg-4 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay="400ms">
+                    <div class="inner-box">
+                        <div class="image-box">
+                            <figure class="image"><a href="super-colors-game.html"><img src="~/images/resource/program-5.jpg" alt=""></a></figure>
+                        </div>
+                        <div class="lower-content">
+                            <h4><a href="super-colors-game.html">Super Colors Game</a></h4>
+                            <div class="text">Lorem ipsum avail but the major have suffer in some form.</div>
+                            <ul class="program-info">
+                                <li><span>Age:</span> 2-3 years</li>
+                                <li><span>Time:</span> 9:00-11:00</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Program Block -->
+                <div class="program-block col-lg-4 col-md-6 col-sm-12 wow fadeInUp" data-wow-delay="800ms">
+                    <div class="inner-box">
+                        <div class="image-box">
+                            <figure class="image"><a href="learning-disciplines.html"><img src="~/images/resource/program-6.jpg" alt=""></a></figure>
+                        </div>
+                        <div class="lower-content">
+                            <h4><a href="learning-disciplines.html">Learning Disciplines</a></h4>
+                            <div class="text">Lorem ipsum avail but the major have suffer in some form.</div>
+                            <ul class="program-info">
+                                <li><span>Age:</span> 2-3 years</li>
+                                <li><span>Time:</span> 9:00-11:00</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>*@
+
+            </div>
+        </div>
+    </section>
+    <!--End Program Section -->

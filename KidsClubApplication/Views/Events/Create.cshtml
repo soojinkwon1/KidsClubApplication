@@ -9,9 +9,14 @@
 <h4>Event</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-6">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="EImagePath" class="control-label"></label>
+                <input asp-for="EImagePath" class="form-control" />
+                <span asp-validation-for="EImagePath" class="text-danger"></span>
+            </div>
             <div class="form-group">
                 <label asp-for="EventTitle" class="control-label"></label>
                 <input asp-for="EventTitle" class="form-control" />
@@ -19,7 +24,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="EventDescription" class="control-label"></label>
-                <input asp-for="EventDescription" class="form-control" />
+                <textarea asp-for="EventDescription" rows="10" class="form-control"></textarea>
                 <span asp-validation-for="EventDescription" class="text-danger"></span>
             </div>
             <div class="form-group">

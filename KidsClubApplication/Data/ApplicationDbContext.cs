@@ -9,12 +9,17 @@ namespace KidsClubApplication.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
+
         }
         public DbSet<KidsClubApplication.Models.Event>? Event { get; set; }
         public DbSet<KidsClubApplication.Models.Gallery>? Gallery { get; set; }
         public DbSet<KidsClubApplication.Models.KCActivity>? KCActivity { get; set; }
-        public DbSet<KidsClubApplication.Models.Competion>? Competion { get; set; }
-        public DbSet<KidsClubApplication.Models.NewsLetter>? NewsLetter { get; set; }
-        public DbSet<KidsClubApplication.Models.Participant>? Participant { get; set; }
+        public DbSet<KidsClubApplication.Models.Message>? Message { get; set; }
+        public DbSet<KidsClubApplication.Models.SuMessage>? SuMessage { get; set; }
+        public DbSet<KidsClubApplication.Models.Booked>? Booked { get; set; }
+        /*public DbSet<KidsClubApplication.Models.SchedulerEvent> SchedulerEvents { get; set; }*/
+        public DbSet<KidsClubApplication.Models.CalendarEvent> CalendarEvent { get; set; }
+
+
     }
 }

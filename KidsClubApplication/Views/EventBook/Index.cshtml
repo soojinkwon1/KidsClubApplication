@@ -1,0 +1,85 @@
+﻿@model KidsClubApplication.Models.Booked
+@{
+    ViewData["Title"] = "EventBook";
+}
+
+@*<div class="row g-0 justify-content-md-center mb-5">
+    <div class="col-9">
+        <div class="content fs-4 lh-base">
+             <p>EventBook</p>           
+        </div>
+    </div>
+</div>
+
+<div class="row g-0 pt-5 pb-5 fs-6 justify-content-md-center messagebox">
+    <div class="col-3 text-white text-end lh-lg pe-3">
+        <h1 class="fs-4">Event Booking</h1>
+        <p>Please leave your name and phone number and event title to join our event!</p>
+    </div>
+    <div class="col-6">
+        <form asp-controller="EventBook" asp-action="EventMessage" method="post">
+            <div class="pb-4 pt-2 row g-0">
+                <div class="form-floating col">
+                    <input type="text" class="form-control" id="EFullName" name="EFullName" placeholder="Your Name">
+                    <label for="EFullName">Your Name</label>
+                </div>
+                 <div class="form-floating col">
+                    <input type="text" class="form-control" id="PNumber" name="PNumber" placeholder="Your number">
+                    <label for="PNumber">Your Number</label>
+                </div>
+                <div class="form-floating col pe-4">
+                    <input type="text" class="form-control" id="ESubject" name="ESubject" placeholder="Joining Event">
+                    <label for="ESubject">Joining Event</label>
+                </div>
+                <div class="form-floating col pe-4">
+                    <input type="text" class="form-control" id="EMessage" name="EMessage" placeholder="Leave a message here">
+                    <label for="EMessage">Leave a message</label>
+                </div>
+              
+            </div>
+            <div class="pb-4"><button type="submit" class="btn btn-light text-uppercase">Join Event</button></div>
+        </form>
+    </div>
+</div>*@
+
+<!-- Contact Form Section -->
+    <section class="contact-form-section">
+        <div class="auto-container">
+            <div class="contact-form">
+                <div class="sec-title text-center">
+                    <span class="title">Would you like to join a event?</span>
+                    <h2>Book a event!</h2>
+                </div>
+
+        <form asp-controller="EventBook" asp-action="EventMessage" method="post" id="contact-form">
+            <div class="row">
+                <div class="form-group col-lg-6 col-md-12 col-sm-12">
+                    <input type="text" class="form-control" id="EFullName" name="EFullName" placeholder="Your Name">
+                    <label for="EFullName">Your Name</label>
+                </div>
+
+                 <div class="form-group col-lg-6 col-md-12 col-sm-12">
+                    <input type="text" class="form-control" id="PNumber" name="PNumber" placeholder="Your number">
+                    <label for="PNumber">Your Number</label>
+                </div>
+
+                <div class="form-group col-lg-6 col-md-12 col-sm-12">
+                    <input type="text" class="form-control" id="ESubject" name="ESubject" placeholder="Joining Event">
+                    <label for="ESubject">Joining Event</label>
+                </div>
+
+            <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                <textarea class="form-control" placeholder="Leave a comment here" id="EMessage" name="EMessage"></textarea>
+                <label for="EMessage">Leave a message</label>
+            </div>
+            </div>
+
+            <div class="form-group col-lg-12 col-md-12 col-sm-12 text-center">
+                <button class="theme-btn btn-style-one" type="submit" name="submit-form">Join Event</button></div>
+
+             </form>
+             </div>
+
+
+            </div>
+        </section>

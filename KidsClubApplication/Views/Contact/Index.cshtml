@@ -1,0 +1,94 @@
+﻿@{
+    ViewData["Title"] = "Contact Me";
+    ViewData["Banner"] = "Contact";
+}
+
+  
+<body>
+    <!--Page Title-->
+    <section class="page-title" style="background-image:url(images/banner3.jpg); border-image-width: 10%;">
+        <div class="auto-container">
+            <div class="inner-container clearfix">
+                <ul class="bread-crumb clearfix">
+                    <li><a href="index-2.html">Home</a></li>
+                    <li>Contact</li>
+                </ul>
+                <h1>Contact</h1>
+            </div>
+        </div>
+    </section>
+    <!--End Page Title-->
+
+    <!-- Contact Map Section -->
+    <section class="contact-map-section">
+        @*<!--Map Outer-->
+        <div class="map-outer">
+            <!--Map Canvas-->
+            <div class="map-canvas"
+                data-zoom="12"
+                data-lat="-46.41638°"
+                data-lng="168.324275"
+                data-type="roadmap"
+                data-hue="#ffc400"
+                data-title="Southland Kaiviti Kids Club"
+                data-icon-path="images/icons/map-marker.png"
+                data-content="288 Pomona St, Strathern, Invercargill, New Zealand, 9812<br><a href='mailto:info@skkc.com'>info@youremail.com</a>">
+            </div>
+        </div>*@
+        <div length="1500px">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2749.886313181134!2d168.3677416160743!3d-46.43113288182585!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa9d2c450b323f633%3A0xe339641114174182!2s288%20Pomona%20Street%2C%20Strathern%2C%20Invercargill%209812!5e0!3m2!1sen!2snz!4v1661958969873!5m2!1sen!2snz" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <div class="row no-gutters">
+            <div class="info-box col-md-4 col-sm-12">
+                <h4><a href="mailto:info@skkc.com">southland<br>kaivitikids<br>club@gmail.com</a></h4>
+            </div>
+            <div class="info-box col-md-4 col-sm-12">
+                <h4><a href="tel:6668880000">666 8888 000</a></h4>
+            </div>
+            <div class="info-box col-md-4 col-sm-12">
+                <h4>288 Pomona St, Strathern, Invercargill, 9812</h4>
+            </div>
+        </div>
+    </section>
+    <!-- End Map Section -->
+
+    <!-- Contact Form Section -->
+    <section class="contact-form-section">
+        <div class="auto-container">
+            <div class="contact-form">
+                <div class="sec-title text-center">
+                    <span class="title">Get in Touch with Us</span>
+                    <h2>Leave a Message</h2>
+                </div>
+
+        <form asp-controller="Contact" asp-action="LeaveMessage" method="post" id="contact-form">
+            <div class="row">
+                <div class="form-group col-lg-6 col-md-12 col-sm-12">
+                    <input type="email" class="form-control" id="Email" name="Email" placeholder="name@example.com">
+                    <label for="Email">Email address</label>
+                </div>
+
+                 <div class="form-group col-lg-6 col-md-12 col-sm-12">
+                    <input type="text" class="form-control" id="FullName" name="FullName" placeholder="Your Name">
+                    <label for="FullName">Your Name</label>
+                </div>
+
+            <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                <textarea class="form-control" placeholder="Leave a comment here" id="Message" name="Message"></textarea>
+                <label for="Message">Message</label>
+            </div>
+
+            <div class="form-group col-lg-12 col-md-12 col-sm-12 text-center">
+                <button class="theme-btn btn-style-one" type="submit" name="submit-form">send a message</button>
+                </div>
+
+             </form>
+             </div>
+
+
+            </div>
+        </section>
+    <!--End Contact Form Section -->
+
+ </body>  
+

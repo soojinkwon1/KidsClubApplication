@@ -1,0 +1,70 @@
+﻿@{
+    ViewData["SiteName"] = "KidsClubAppliation.com";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - KKC Admin Panel</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/KidsClubApplication.styles.css" asp-append-version="true" />
+</head>
+<body>
+   
+    <header>
+   
+       <div class="fixed-header">
+                <div class="auto-container clearfix">
+                    
+                       <div class="pull-right">
+                          <nav class="main-menu">
+                            <div class="navbar-collapse show collapse clearfix">
+                                <div class="logo pull-left">
+                                      <a><img src="~/images/logo.png" style="width: 100px;"></a>
+                                     </div>
+                                <ul class="navigation clearfix">
+                                    
+                                    <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                                    <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="About" asp-action="Index">About</a></li>
+                                    <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Events" asp-action="Index">Event</a></li>
+                                    <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Galleries" asp-action="Index">Gallery</a></li>
+                                    <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="KCActivities" asp-action="Index">Activitie</a></li>
+                                    <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Contact" asp-action="Index">Contact</a></li>
+                                    <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="EventBook" asp-action="Index">EventBook</a></li>
+                                    @if (User.IsInRole("Administrator"))
+                                    {
+                                    <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="BookedMessage">Booked</a></li>
+                                    }
+                                    @if (User.IsInRole("Administrator"))
+                                    {
+                                    <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="Messages">Contact Messages</a></li>
+                                    }
+                                    @if (User.IsInRole("Administrator"))
+                                    {
+                                    <li class="nav-item"><a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="SuMessages">Subscribe</a></li>
+                                    }
+                                    <partial name="_LoginPartial" />
+
+                                </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+ </header>
+@RenderBody()
+    </div>
+      <footer class="lh-lg text-muted">
+        <div class="container text-center">
+            &copy; 2022 - @ViewData["SiteName"]. Power by .NET 6.0
+        </div>
+    </footer>  
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
