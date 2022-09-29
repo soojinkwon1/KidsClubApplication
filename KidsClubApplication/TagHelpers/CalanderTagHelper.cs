@@ -6,7 +6,7 @@ using KidsClubApplication.Models;
 namespace KidsClubApplication.TagHelpers
 {
     // You may need to install the Microsoft.AspNetCore.Razor.Runtime package into your project
-/*    [HtmlTargetElement("calendar", TagStructure = TagStructure.NormalOrSelfClosing)]
+    [HtmlTargetElement("calendar", TagStructure = TagStructure.NormalOrSelfClosing)]
     public class CalendarTagHelper : TagHelper
     {
         public int Month { get; set; }
@@ -26,7 +26,11 @@ namespace KidsClubApplication.TagHelpers
         private string GetHtml()
         {
             var monthStart = new DateTime(Year, Month, 1);
-            var events = Events?.GroupBy(e => e.Date);
+
+            var events = Events?.Where(e => e != null && e.Date.Month == monthStart.Month).GroupBy(e => e.Date);
+
+/*
+            var events = Events?.GroupBy(e => e.Date);*/
 
             var html = new XDocument(
                 new XElement("div",
@@ -110,8 +114,8 @@ namespace KidsClubApplication.TagHelpers
             }
         }
     }
-}*/
-[HtmlTargetElement("calendar", TagStructure = TagStructure.NormalOrSelfClosing)]
+}
+/*[HtmlTargetElement("calendar", TagStructure = TagStructure.NormalOrSelfClosing)]
 public class CalendarTagHelper : TagHelper
 {
     public int Month { get; set; }
@@ -216,3 +220,4 @@ public class CalendarTagHelper : TagHelper
     }
 }
 }
+*/
