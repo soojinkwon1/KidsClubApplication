@@ -21,12 +21,12 @@ namespace KidsClubApplication.Controllers
         }
 
         // GET: CalendarEvents
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? month, int? year)
         {
             ViewBag.Calendar = "C";
-            int month = DateTime.Now.Month;
+            month = month == null ? DateTime.Now.Month: month;
             ViewBag.Month = month;
-            int year = DateTime.Now.Year;
+            year = year == null ? DateTime.Now.Year : year;
             ViewBag.Year = year;
             Debug.WriteLine($"Month is {ViewBag.Month}");
             return View(await _context.CalendarEvent.ToListAsync());

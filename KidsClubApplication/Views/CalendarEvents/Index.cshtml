@@ -10,7 +10,7 @@
         nextYear = ViewBag.Year + 1;
     }
     else{
-        nextMonth = ViewBag.Month;
+        nextMonth = ViewBag.Month + 1;
         nextYear = ViewBag.Year;
     }
     //previous month calculation
@@ -20,7 +20,7 @@
         prevYear = ViewBag.Year - 1;
     }
     else{
-        prevMonth = ViewBag.Month;
+        prevMonth = ViewBag.Month -1;
         prevYear = ViewBag.Year;
     }
 
@@ -30,10 +30,8 @@
 
 
 <h1>Event Calendar</h1>
-
-<button type="button" href="@prevMonth" onclick="">↑</button>
-<button type="button" href="@nextMonth" onclick="">↓</button>
-
+<a class="btn btn-primary" asp-controller="CalendarEvents" asp-action="Index" asp-route-month="@nextMonth" asp-route-year="@nextYear">↑</a>
+<a class="btn btn-primary" asp-controller="CalendarEvents" asp-action="Index" asp-route-month="@prevMonth" asp-route-year="@prevYear">↓</a>
 
 <calendar month="@ViewBag.Month" year="@ViewBag.Year" events="@Model.ToList<CalendarEvent>()" />
 
