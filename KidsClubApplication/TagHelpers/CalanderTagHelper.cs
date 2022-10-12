@@ -23,14 +23,29 @@ namespace KidsClubApplication.TagHelpers
             output.TagMode = TagMode.StartTagAndEndTag;
         }
 
+        /*public string echo(string Xmonth)
+        {
+            *//*return splitmonth;
+             08/2022*//*
+            string[] parts = Xmonth.Split('/');
+            int month = int.Parse(parts[0]);
+            int year = int.Parse(parts[1]);
+
+
+        }*/
+
+
         private string GetHtml()
         {
             var monthStart = new DateTime(Year, Month, 1);
 
             var events = Events?.Where(e => e != null && e.Date.Month == monthStart.Month).GroupBy(e => e.Date);
 
-/*
-            var events = Events?.GroupBy(e => e.Date);*/
+            /*var formattedDate = getMonth;
+            oTxtDate.value = formattedDate.getMonth() + '/' +
+                 (formattedDate.getMonth() + 1) + '/' + formattedDate.getFullYear();*/
+            /*var events = Events?.GroupBy(e => e.Date);*/
+            
 
             var html = new XDocument(
                 new XElement("div",

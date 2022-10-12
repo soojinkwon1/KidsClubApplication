@@ -38,6 +38,7 @@ builder.Services.Configure<IdentityOptions>(options =>
 
 var app = builder.Build();
 
+
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
@@ -70,6 +71,12 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+/*//calendar middleware
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Calander}/{action=Index}/{id?}");*/
+
 app.MapRazorPages();
 
 app.Run();

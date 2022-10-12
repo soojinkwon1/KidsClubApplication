@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using KidsClubApplication.Data;
 using KidsClubApplication.Models;
+using System.Diagnostics;
 
 namespace KidsClubApplication.Controllers
 {
@@ -22,8 +23,17 @@ namespace KidsClubApplication.Controllers
         // GET: CalendarEvents
         public async Task<IActionResult> Index()
         {
-              return View(await _context.CalendarEvent.ToListAsync());
+            ViewBag.Calendar = "C";
+            int month = DateTime.Now.Month;
+            ViewBag.Month = month;
+            int year = DateTime.Now.Year;
+            ViewBag.Year = year;
+            Debug.WriteLine($"Month is {ViewBag.Month}");
+            return View(await _context.CalendarEvent.ToListAsync());
         }
+        
+
+
 
         // GET: CalendarEvents/Details/5
         public async Task<IActionResult> Details(int? id)

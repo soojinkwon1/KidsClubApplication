@@ -2,11 +2,65 @@
 
 @{
     ViewData["Title"] = "Index";
+
+    int nextMonth, nextYear, prevMonth, prevYear;
+    //next month calculation
+    if(ViewBag.Month + 1 > 12){
+        nextMonth = 1;
+        nextYear = ViewBag.Year + 1;
+    }
+    else{
+        nextMonth = ViewBag.Month;
+        nextYear = ViewBag.Year;
+    }
+    //previous month calculation
+    if (ViewBag.Month - 1 < 1)
+    {
+        prevMonth = 12;
+        prevYear = ViewBag.Year - 1;
+    }
+    else{
+        prevMonth = ViewBag.Month;
+        prevYear = ViewBag.Year;
+    }
+
+    string goToNextMonth = "/calendar/" + nextMonth + "-" + nextYear;
+    string goToPrevMonth = "/calendar/" + prevMonth + "-" + prevYear;
 }
 
 
+<h1>Event Calendar</h1>
 
-<h1>Index</h1>
+<button type="button" href="@prevMonth" onclick="">↑</button>
+<button type="button" href="@nextMonth" onclick="">↓</button>
+
+
+<calendar month="@ViewBag.Month" year="@ViewBag.Year" events="@Model.ToList<CalendarEvent>()" />
+
+
+
+
+@*@if (Model.Count > 3){<ul>@foreach(var item in Model){<li>@item.Name</li>}</ul>}*@
+
+@*@{
+    int i = DateTime.Now.Month;
+    int j = DateTime.Now.Year;
+}
+<calendar month="@i" year="@j" events="@Model.ToList<CalendarEvent>()" />
+
+<button type="button" id="btn"
+        onclick="location.href='@Url.Action('ACTION_METHOD_NAME',
+     'CONTROLLER_NAME_WHERE_THE_ACTION_METHOD_RESIDES')'">
+    TEXT YOU WANT TO DISPLAY ON THE BUTTON
+</button>
+
+
+
+<button type="button" onclick="@{
+    i = i
+ }">
+    Test
+</button>*@
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -49,15 +103,5 @@
     </tbody>
 </table>
 
-<calendar month="9" year="2022" events="@Model.ToList<CalendarEvent>()" />
-@*<button>></button>
-<button onclick="@Model.ToList<CalendarEvent>()" type="button" name="button" id="showButton">show</button>*@
 
-<calendar month="10" year="2022" events="@Model.ToList<CalendarEvent>()" />
-
-<calendar month="11" year="2022" events="@Model.ToList<CalendarEvent>()" />
-
-<calendar month="12" year="2022" events="@Model.ToList<CalendarEvent>()" />
-
-<calendar month="1" year="2022" events="@Model.ToList<CalendarEvent>()" />
 
